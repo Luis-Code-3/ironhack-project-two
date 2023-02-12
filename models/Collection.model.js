@@ -17,6 +17,11 @@ const collectionSchema = new Schema(
             required: [true, "Collection Logo is required"],
             unique: true
         },
+        backgroundHeader: {
+            type: String,
+            required: [true, "Collection Background Header is required"],
+            unique: true
+        },
         description: {
             type: String,
             required: [true, "Collection Description is required"]
