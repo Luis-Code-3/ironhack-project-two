@@ -7,7 +7,7 @@ const Nft = require('../models/Nft.model');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('collections/all-collections');
+  res.render('collections/all-collections', {userInSession: req.session.currentUser});
 });
 
 router.get('/:id', function(req, res, next) {

@@ -5,6 +5,17 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+
+    {{#if userInSession}}
+    <nav>
+      <a href="/"><h1>UniQ</h1></a>
+      <span>{{userInSession.username}}</span>
+      <a href="/profile">Profile</a>
+      <a href="/collection">Explore</a>
+      <a href="/upcoming-releases">Drops</a>
+      <a href="/logout">Logout</a>
+    </nav>
+    {{else}}
     <nav>
       <a href="/"><h1>UniQ</h1></a>
       <a href="/signup">Sign Up</a>
@@ -13,6 +24,8 @@
       <a href="/collection">Explore</a>
       <a href="/upcoming-releases">Drops</a>
     </nav>
+    {{/if}}
+
     {{{body}}}
   </body>
 </html>
