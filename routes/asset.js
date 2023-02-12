@@ -5,9 +5,13 @@ const User = require('../models/User.model');
 const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model');
 
-/* GET users listing. */
-router.get('/:id/:name', function(req, res, next) {
-  res.render('user/user');
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('nfts/all-nfts');
 });
+
+router.get('/:id/:number', function(req, res, next) {
+    res.render('nfts/nft-details');
+  });
 
 module.exports = router;
