@@ -9,6 +9,9 @@
 <a href="/collection/{{foundCollection._id}}/add-nft"><button>Add NFT</button></a>
 <a href="/collection/{{foundCollection._id}}/edit-details"><button>Edit Details</button></a>
 <a href="/collection/{{foundCollection._id}}/delete-collection"><button>Delete Collection</button></a>
+{{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+{{/if}}
 
 <br>
 

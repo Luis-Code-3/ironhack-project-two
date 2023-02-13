@@ -4,6 +4,7 @@ var router = express.Router();
 const User = require('../models/User.model');
 const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model');
+const {isLoggedIn, isLoggedOut, isCollectionOwner} = require('../middleware/route-guard')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -47,11 +48,11 @@ router.get('/:id', function(req, res, next) {
 
 //
 
-router.get('/:id/add-nft', (req,res) => {
+router.get('/:id/add-nft',isCollectionOwner, (req,res) => {
   res.render('nfts/add-nft',{collectionId: req.params.id, userInSession: req.session.currentUser})
 });
 
-router.post('/:id/add-nft', (req,res) => {
+router.post('/:id/add-nft',isCollectionOwner, (req,res) => {
 
   const {imageUrl, price} = req.body;
 
@@ -88,7 +89,7 @@ router.post('/:id/add-nft', (req,res) => {
 
 //
 
-router.get('/:id/delete-collection', (req,res) => {
+router.get('/:id/delete-collection',isCollectionOwner, (req,res) => {
 
   Collection.findById(req.params.id)
   .then((foundCollection) => {
@@ -126,7 +127,7 @@ router.get('/:id/delete-collection', (req,res) => {
 
 //
 
-router.get('/:id/edit-details', (req,res) => {
+router.get('/:id/edit-details',isCollectionOwner, (req,res) => {
 
   Collection.findById(req.params.id)
   .then((foundCollection) => {
@@ -141,7 +142,7 @@ router.get('/:id/edit-details', (req,res) => {
 
 });
 
-router.post('/:id/edit-details', (req,res) => {
+router.post('/:id/edit-details',isCollectionOwner, (req,res) => {
   
   const {collectionName, description, logoUrl, backgroundHeader} = req.body;
 

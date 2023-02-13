@@ -5,6 +5,8 @@ const User = require('../models/User.model');
 const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model');
 
+const {isLoggedIn, isLoggedOut, isCollectionOwner, isNftCreator} = require('../middleware/route-guard')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('nfts/all-nfts');
@@ -27,7 +29,7 @@ router.get('/:id/:number', function(req, res, next) {
 
 //
 
-router.get('/:id/:number/remove', (req,res) => {
+router.get('/:id/:number/remove',isNftCreator, (req,res) => {
 
   Nft.findById(req.params.id)
   .then((foundNft) => {
