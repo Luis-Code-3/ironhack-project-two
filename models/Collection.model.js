@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const collectionSchema = new Schema(
     {
-        name: {
+        collectionName: {
             type: String,
             required: [true, "Collection Name is required"],
             unique: true
@@ -38,3 +38,4 @@ const collectionSchema = new Schema(
 );
 
 module.exports = model('Collection', collectionSchema);
+

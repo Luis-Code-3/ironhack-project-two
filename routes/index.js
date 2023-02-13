@@ -48,6 +48,7 @@ router.post('/signup',isLoggedOut, (req,res) => {
     res.redirect('/login')
   })
   .catch((err) => {
+    //what is this thing here?
     if (err instanceof mongoose.Error.ValidationError) {
       res.status(500).render('user/signup', { errorMessage: err.message });
     } else if (err.keyPattern.hasOwnProperty('email')) {

@@ -1,9 +1,9 @@
 <h2>Create Collection</h2>
 
-<form action="" method="post">
+<form action="/create-collection" method="post">
 
     <label for="">Collection Name:</label>
-    <input type="text" name="name">
+    <input type="text" name="collectionName">
 
     <label for="">Description:</label>
     <input type="text" name="description">
@@ -18,7 +18,10 @@
     <input type="number" name="price">
 
     <label for="">Blockchain:</label>
-    <input type="text" name="blockchain">
+    <select name="blockchain">
+        <option value="ethereum">Ethereum</option>
+        <option value="solana">Solana</option>
+    </select>
 
     <label for="">Logo:</label>
     <input type="text" name="logoUrl">
@@ -32,3 +35,7 @@
     <button type="submit">Create Collection</button>
 
 </form>
+
+{{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+{{/if}}
