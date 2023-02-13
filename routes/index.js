@@ -111,7 +111,17 @@ router.get('/logout',isLoggedIn, function(req, res, next) {
 //
 
 router.get('/profile',isLoggedIn, function(req, res, next) {
-  res.render('user/profile', {userInSession: req.session.currentUser});
+
+  User.findById(req.session.currentUser._id)
+  .populate('collections')
+  .then((foundUser) => {
+    console.log(foundUser);
+    res.render('user/profile', foundUser);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
 });
 
 module.exports = router;

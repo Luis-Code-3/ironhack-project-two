@@ -1,0 +1,10 @@
+<img src="{{imageUrl}}" alt="Nft Image">
+<a href="/collection/{{fromCollection._id}}">{{fromCollection.collectionName}}</a>
+<h2>{{nftName}} #{{numberId}}</h2>
+<p>Owned by: <a href="/users/{{owner._id}}/{{owner.username}}">{{owner.username}}</a></p>
+<p>Price: {{price}} ETH</p>
+<button>Buy</button>
+<button>Sell</button>
+<h4>Description:</h4>
+<p>By <a href="/collection/{{fromCollection._id}}">{{fromCollection.collectionName}}</a></p>
+<p>{{fromCollection.description}}</p>

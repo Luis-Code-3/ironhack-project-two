@@ -11,7 +11,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id/:number', function(req, res, next) {
-    res.render('nfts/nft-details');
-  });
+    Nft.findById(req.params.id)
+    .populate('owner')
+    .populate('fromCollection')
+    .then((foundNft) => {
+      res.render('nfts/nft-details', foundNft);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+});
+
+//
+
+router.post('/:id/:number/remove', (req,res) => {
+
+});
 
 module.exports = router;

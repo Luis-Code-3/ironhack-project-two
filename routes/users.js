@@ -7,7 +7,18 @@ const Nft = require('../models/Nft.model');
 
 /* GET users listing. */
 router.get('/:id/:name', function(req, res, next) {
-  res.render('user/user');
+
+  User.findById(req.params.id)
+  .populate('collections')
+  .then((foundUser) => {
+    console.log(foundUser);
+    res.render('user/user', foundUser);
+
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
 });
 
 module.exports = router;
