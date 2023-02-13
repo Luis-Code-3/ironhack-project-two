@@ -12,8 +12,10 @@ router.get('/:id/:name', function(req, res, next) {
   .populate('collections')
   .then((foundUser) => {
     console.log(foundUser);
-    res.render('user/user', foundUser);
-
+    res.render('user/user', {
+      user: foundUser,
+      userInSession: req.session.currentUser
+    });
   })
   .catch((err) => {
     console.log(err);

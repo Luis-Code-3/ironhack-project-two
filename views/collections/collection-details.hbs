@@ -1,18 +1,18 @@
-<img src="{{logoUrl}}" alt="Nft Logo">
-<img src="{{backgroundHeader}}" alt="Header">
-<h2>{{collectionName}}</h2>
-<h4>Created by: <a href="/users/{{owner._id}}/{{owner.username}}">{{owner.username}}</a></h4>
-<h4>Size: {{size}}</h4>
-<h4>Blockchain: {{blockchain}}</h4>
-<p>{{description}}</p>
+<img src="{{foundCollection.logoUrl}}" alt="Nft Logo">
+<img src="{{foundCollection.backgroundHeader}}" alt="Header">
+<h2>{{foundCollection.collectionName}}</h2>
+<h4>Created by: <a href="/users/{{foundCollection.owner._id}}/{{foundCollection.owner.username}}">{{foundCollection.owner.username}}</a></h4>
+<h4>Size: {{foundCollection.size}}</h4>
+<h4>Blockchain: {{foundCollection.blockchain}}</h4>
+<p>{{foundCollection.description}}</p>
 
-<a href="/collection/{{_id}}/add-nft"><button>Add NFT</button></a>
-<a href="/collection/{{_id}}/edit-details"><button>Edit Details</button></a>
-<a href="/collection/{{_id}}/delete-collection"><button>Delete Collection</button></a>
+<a href="/collection/{{foundCollection._id}}/add-nft"><button>Add NFT</button></a>
+<a href="/collection/{{foundCollection._id}}/edit-details"><button>Edit Details</button></a>
+<a href="/collection/{{foundCollection._id}}/delete-collection"><button>Delete Collection</button></a>
 
 <br>
 
-{{#each items}}
+{{#each foundCollection.items}}
     <br>
     {{> nftCard}}
     <a href="/asset/{{_id}}/{{numberId}}/remove"><button>Remove</button></a>

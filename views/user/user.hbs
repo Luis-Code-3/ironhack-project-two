@@ -1,8 +1,8 @@
 <img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
-<h2>{{username}}</h2>
+<h2>{{user.username}}</h2>
 
 <h3>Collections Created:</h3>
 
-{{#each collections}}
+{{#each user.collections}}
     {{> collectionCard}}
 {{/each}}

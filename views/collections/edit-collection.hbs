@@ -1,19 +1,19 @@
 <h2>Edit Collection Details:</h2>
 
 
-<form action="/collection/{{_id}}/edit-details" method="post">
+<form action="/collection/{{foundCollection._id}}/edit-details" method="post">
 
     <label for="">Name:</label>
-    <input type="text" name="collectionName" value="{{collectionName}}">
+    <input type="text" name="collectionName" value="{{foundCollection.collectionName}}">
 
     <label for="">Description:</label>
-    <input type="text" name="description" value="{{description}}">
+    <input type="text" name="description" value="{{foundCollection.description}}">
 
     <label for="">Logo:</label>
-    <input type="text" name="logoUrl" value="{{logoUrl}}">
+    <input type="text" name="logoUrl" value="{{foundCollection.logoUrl}}">
 
     <label for="">Background Header:</label>
-    <input type="text" name="backgroundHeader" value="{{backgroundHeader}}">
+    <input type="text" name="backgroundHeader" value="{{foundCollection.backgroundHeader}}">
 
     <button type="submit">Save</button>
 

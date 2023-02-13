@@ -116,7 +116,10 @@ router.get('/profile',isLoggedIn, function(req, res, next) {
   .populate('collections')
   .then((foundUser) => {
     console.log(foundUser);
-    res.render('user/profile', foundUser);
+    res.render('user/profile', {
+      profileUser: foundUser,
+      userInSession: req.session.currentUser
+    });
   })
   .catch((err) => {
     console.log(err);

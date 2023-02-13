@@ -1,10 +1,10 @@
-<img src="{{imageUrl}}" alt="Nft Image">
-<a href="/collection/{{fromCollection._id}}">{{fromCollection.collectionName}}</a>
-<h2>{{nftName}} #{{numberId}}</h2>
-<p>Owned by: <a href="/users/{{owner._id}}/{{owner.username}}">{{owner.username}}</a></p>
-<p>Price: {{price}} ETH</p>
+<img src="{{foundNft.imageUrl}}" alt="Nft Image">
+<a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a>
+<h2>{{foundNft.nftName}} #{{foundNft.numberId}}</h2>
+<p>Owned by: <a href="/users/{{foundNft.owner._id}}/{{foundNft.owner.username}}">{{foundNft.owner.username}}</a></p>
+<p>Price: {{foundNft.price}} ETH</p>
 <button>Buy</button>
 <button>Sell</button>
 <h4>Description:</h4>
-<p>By <a href="/collection/{{fromCollection._id}}">{{fromCollection.collectionName}}</a></p>
-<p>{{fromCollection.description}}</p>
+<p>By <a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a></p>
+<p>{{foundNft.fromCollection.description}}</p>
