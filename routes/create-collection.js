@@ -42,9 +42,27 @@ router.post('/', (req,res) => {
         blockchain
       })
       .then((createdNft) => {
-        return Collection.findByIdAndUpdate(createdCollection._id, {
+        Collection.findByIdAndUpdate(createdCollection._id, {
           $push: {items: createdNft._id}
         }, {new: true})
+        .then((updatedCollection) => {
+          console.log(updatedCollection);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        return createdNft;
+      })
+      .then((createdNft) => {
+        User.findByIdAndUpdate(createdCollection.owner, {
+          $push: {itemsOwned: createdNft._id}
+        })
+        .then((foundUser) => {
+          console.log(foundUser);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       })
       .catch((err) => {
         console.log(err);

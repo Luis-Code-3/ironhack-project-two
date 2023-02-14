@@ -6,12 +6,12 @@
 <h4>Blockchain: {{foundCollection.blockchain}}</h4>
 <p>{{foundCollection.description}}</p>
 
+
+
+{{#if isCollectionOwner}}
 <a href="/collection/{{foundCollection._id}}/add-nft"><button>Add NFT</button></a>
 <a href="/collection/{{foundCollection._id}}/edit-details"><button>Edit Details</button></a>
 <a href="/collection/{{foundCollection._id}}/delete-collection"><button>Delete Collection</button></a>
-{{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-{{/if}}
 
 <br>
 
@@ -20,3 +20,17 @@
     {{> nftCard}}
     <a href="/asset/{{_id}}/{{numberId}}/remove"><button>Remove</button></a>
 {{/each}}
+
+{{else}}
+
+{{#each foundCollection.items}}
+    <br>
+    {{> nftCard}}
+{{/each}}
+
+
+{{/if}}
+
+{{!-- {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+{{/if}} --}}

@@ -46,6 +46,18 @@ router.get('/:id/:number/remove',isNftCreator, (req,res) => {
     return foundNft;
   })
   .then((foundNft) => {
+    User.findByIdAndUpdate(foundNft.owner, {
+      $pull: {itemsOwned: foundNft._id}
+    }, {new: true})
+    .then((foundUser) => {
+      console.log("Updated User After Removal:", foundUser);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    return foundNft;
+  })
+  .then((foundNft) => {
     //console.log('found NFT before delete:', foundNft);
     Nft.findByIdAndDelete(req.params.id)
     .then((confirmation) => {

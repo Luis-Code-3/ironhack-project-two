@@ -40,7 +40,8 @@ router.post('/signup',isLoggedOut, (req,res) => {
     return User.create({
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      ethereumBalance: 10
     });
   })
   .then((newUser) => {

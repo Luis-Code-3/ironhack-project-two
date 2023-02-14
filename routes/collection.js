@@ -36,10 +36,24 @@ router.get('/:id', function(req, res, next) {
   .populate('items')
   .then((foundCollection) => {
     //console.log(foundCollection);
-    res.render('collections/collection-details', {
-      foundCollection,
-      userInSession: req.session.currentUser
-    });
+    //console.log(req.session.currentUser.id);
+
+    if(!req.session.currentUser || foundCollection.owner._id != req.session.currentUser._id) {
+      res.render('collections/collection-details', {
+        foundCollection,
+        userInSession: req.session.currentUser
+      });
+      // console.log("Error lol");
+      // console.log("Current User:",req.session.currentUser);
+      // console.log("Found Collection Owner:",foundCollection.owner);
+      // console.log("Current User Id:",req.session.currentUser._id);
+    } else {
+      res.render('collections/collection-details', {
+        foundCollection,
+        userInSession: req.session.currentUser,
+        isCollectionOwner: "I am owner"
+      });
+    }
   })
   .catch((err) => {
     console.log(err);
@@ -69,6 +83,18 @@ router.post('/:id/add-nft',isCollectionOwner, (req,res) => {
       blockchain: foundCollection.blockchain
     })
     .then((createdNft) => {
+      User.findByIdAndUpdate(createdNft.owner,{
+        $push: {itemsOwned: createdNft._id}
+      }, {new: true})
+      .then((foundUser) => {
+        console.log(foundUser);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      return createdNft;
+    })
+    .then((createdNft) => {
       return Collection.findByIdAndUpdate(createdNft.fromCollection, {
         $push: {items: createdNft._id},
         $inc: {size: 1}
@@ -92,6 +118,7 @@ router.post('/:id/add-nft',isCollectionOwner, (req,res) => {
 router.get('/:id/delete-collection',isCollectionOwner, (req,res) => {
 
   Collection.findById(req.params.id)
+  .populate('items')
   .then((foundCollection) => {
     let collectionToDelete = foundCollection;
     User.findByIdAndUpdate(foundCollection.owner, {
@@ -100,13 +127,33 @@ router.get('/:id/delete-collection',isCollectionOwner, (req,res) => {
     .then((updatedUser) => {
       console.log(updatedUser);
       return collectionToDelete.items.forEach((el) => {
-        Nft.findByIdAndDelete(el)
-        .then((confirmation) => {
-          console.log(confirmation);
+        User.findByIdAndUpdate(el.owner, {
+          $pull: {itemsOwned: el._id}
+        }, {new: true})
+        .then((updatedUser) => {
+          Nft.findByIdAndDelete(el._id)
+          .then((confirmation) => {
+            console.log(confirmation);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
         })
         .catch((err) => {
           console.log(err);
         })
+
+
+        // Nft.findByIdAndDelete(el)
+        // .then((confirmation) => {
+        //   console.log(confirmation);
+        // })
+        // .catch((err) => {
+        //   console.log(err);
+        // })
+
+
+
       })
     })
     .then((itemsArray) => {

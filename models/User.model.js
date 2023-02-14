@@ -16,7 +16,12 @@ const userSchema = new Schema(
             type: String,
             required: [true, "Password is required"]
         },
-        collections: [{type: Schema.Types.ObjectId, ref: "Collection"}]
+        collections: [{type: Schema.Types.ObjectId, ref: "Collection"}],
+        ethereumBalance: {
+            type: Number,
+            required: [true, "Balance is required"]
+        },
+        itemsOwned: [{type: Schema.Types.ObjectId, ref: "Nft"}]
     },
     {
         timestamps: true
