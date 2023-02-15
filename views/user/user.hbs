@@ -1,8 +1,13 @@
 <img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
 <h2>{{user.username}}</h2>
 
-<h3>Collections Created:</h3>
+<a href="/users/{{user._id}}/{{user.username}}/collections"><h3>Collections Created:</h3></a>
 
 {{#each user.collections}}
     {{> collectionCard}}
+{{/each}}
+
+<a href="/users/{{user._id}}/{{user.username}}/nfts"><h3>NFTs Owned:</h3></a>
+{{#each user.itemsOwned}}
+    {{> nftCard}}
 {{/each}}

@@ -12,8 +12,19 @@ const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', {userInSession: req.session.currentUser});
+router.get('/', async function(req, res, next) {
+
+  try {
+    const allCollectionsArray = await Collection.find()
+    const allNftsArray = await Nft.find()
+    res.render('index', {
+      userInSession: req.session.currentUser,
+      allNfts: allNftsArray,
+      allCollections: allCollectionsArray
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 //
@@ -111,25 +122,36 @@ router.get('/logout',isLoggedIn, function(req, res, next) {
 
 //
 
-router.get('/profile',isLoggedIn, function(req, res, next) {
+router.get('/add-balance', (req,res) => {
 
   User.findById(req.session.currentUser._id)
-  .populate('collections')
   .then((foundUser) => {
-    console.log(foundUser);
-    res.render('user/profile', {
-      profileUser: foundUser,
+    res.render('user/addBalanceProfile', {
+      foundUser,
       userInSession: req.session.currentUser
-    });
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+})
+
+router.post('/add-balance', (req,res) => {
+
+  const {balanceAdd} = req.body;
+
+  User.findByIdAndUpdate(req.session.currentUser._id, {
+    $inc: {ethereumBalance: balanceAdd}
+  }, {new: true})
+  .then((updatedUser) => {
+    console.log(updatedUser);
+    res.redirect(`/profile`)
   })
   .catch((err) => {
     console.log(err);
   })
 
-});
+})
 
-// router.get('/add-balance', (req,res) => {
-//   res.render
-// })
 
 module.exports = router;

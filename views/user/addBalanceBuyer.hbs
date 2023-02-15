@@ -2,9 +2,9 @@
     <p>{{errorMessage}}</p>
 {{/if}}
 <h3>Current Balance: {{userBalance}} ETH</h3>
-<form action="">
+<form action="/asset/{{NftToBuy._id}}/{{NftToBuy.numberId}}/add-balance" method="post">
     <label for=""></label>
     <input type="text" name="balanceAdd" placeholder="1234">
-    <button>Add ETH</button>
+    <button type="submit">Add ETH</button>
 </form>
 

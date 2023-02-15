@@ -14,6 +14,7 @@ var assetRouter = require('./routes/asset');
 var collectionRouter = require('./routes/collection');
 var createRouter = require('./routes/create-collection');
 var dropsRouter = require('./routes/drops')
+var profileRouter = require('./routes/profile')
 
 var app = express();
 
@@ -57,6 +58,7 @@ app.use('/collection', collectionRouter);
 app.use('/asset', assetRouter);
 app.use('/create-collection', createRouter);
 app.use('/upcoming-releases', dropsRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,1 +1,12 @@
 <h2>Home</h2>
+
+<a href="/collection"><h3>Collections:</h3></a>
+{{#each allCollections}}
+    {{> collectionCard}}
+{{/each}}
+
+
+<a href="/asset"><h3>NFTs:</h3></a>
+{{#each allNfts}}
+    {{> nftCard}}
+{{/each}}

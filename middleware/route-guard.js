@@ -61,10 +61,11 @@ const checkBalance = (req,res,next) => {
             if(foundUser.ethereumBalance >= foundNft.price){
                 next();
             } else {
-                res.render('user/addBalance', {
+                res.render('user/addBalanceBuyer', {
                     errorMessage:"Insufficient Funds, Add ETH to Balance",
                     userBalance: foundUser.ethereumBalance,
-                    userInSession: req.session.currentUser
+                    userInSession: req.session.currentUser,
+                    NftToBuy: foundNft
                 })
             }
         })

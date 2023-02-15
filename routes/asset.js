@@ -9,7 +9,16 @@ const {isLoggedIn, isLoggedOut, isCollectionOwner, isNftCreator, checkBalance} =
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('nfts/all-nfts');
+  Nft.find()
+  .then((allNftsArray) => {
+    res.render('nfts/all-nfts', {
+      userInSession: req.session.currentUser,
+      allNfts: allNftsArray
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  })
 });
 
 router.get('/:id/:number', function(req, res, next) {
@@ -219,6 +228,24 @@ router.get('/:id/:number/buy',isLoggedIn,checkBalance, (req,res) => {
   // Nft.findByIdAndUpdate(req.params.id, {
 
   // }, {new: true})
+})
+
+
+router.post('/:id/:numberId/add-balance', (req,res) => {
+
+  const {balanceAdd} = req.body;
+
+  User.findByIdAndUpdate(req.session.currentUser._id, {
+    $inc: {ethereumBalance: balanceAdd}
+  }, {new: true})
+  .then((updatedUser) => {
+    console.log(updatedUser);
+    res.redirect(`/asset/${req.params.id}/${req.params.numberId}`)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
 })
 
 module.exports = router;
