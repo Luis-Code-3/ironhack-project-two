@@ -80,7 +80,8 @@ router.post('/:id/add-nft',isCollectionOwner, (req,res) => {
       numberId: foundCollection.size + 1,
       imageUrl,
       price,
-      blockchain: foundCollection.blockchain
+      blockchain: foundCollection.blockchain,
+      forSale: true
     })
     .then((createdNft) => {
       User.findByIdAndUpdate(createdNft.owner,{

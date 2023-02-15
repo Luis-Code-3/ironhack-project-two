@@ -17,10 +17,80 @@ router.get('/:id/:number', function(req, res, next) {
     .populate('owner')
     .populate('fromCollection')
     .then((foundNft) => {
-      res.render('nfts/nft-details', {
-        foundNft,
-        userInSession: req.session.currentUser
-      });
+
+      // if(foundNft.forSale === false && foundNft.owner._id == req.session.currentUser._id) {
+      //   res.render('nfts/nft-details', {
+      //     foundNft,
+      //     userInSession: req.session.currentUser,
+      //     NotForSale: "Not for sale",
+      //     isNftOwner: "I am owner"
+      //   });
+      // } else if(!req.session.currentUser || foundNft.owner._id != req.session.currentUser._id) {
+      //   res.render('nfts/nft-details', {
+      //     foundNft,
+      //     userInSession: req.session.currentUser
+      //   });
+      //   // console.log("Error lol");
+      //   // console.log("Current User:",req.session.currentUser);
+      //   // console.log("Found Collection Owner:",foundCollection.owner);
+      //   // console.log("Current User Id:",req.session.currentUser._id);
+      // } else {
+      //   res.render('nfts/nft-details', {
+      //     foundNft,
+      //     userInSession: req.session.currentUser,
+      //     isNftOwner: "I am owner"
+      //   });
+      // }
+
+
+      if(!req.session.currentUser && foundNft.forSale === false) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser,
+          NotForSale: "Not for sale",
+        });
+      } else if (!req.session.currentUser && foundNft.forSale === true) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser
+        });
+      } else if (foundNft.owner._id != req.session.currentUser._id && foundNft.forSale === false) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser,
+          NotForSale: "Not for sale",
+        });
+      } else if(foundNft.owner._id != req.session.currentUser._id && foundNft.forSale === true) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser
+        });
+      } else if (foundNft.owner._id == req.session.currentUser._id && foundNft.forSale === false) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser,
+          NotForSale: "Not for sale",
+          isNftOwner: "I am owner"
+        });
+      } else if (foundNft.owner._id == req.session.currentUser._id && foundNft.forSale === true) {
+        res.render('nfts/nft-details', {
+          foundNft,
+          userInSession: req.session.currentUser,
+          isNftOwner: "I am owner"
+        });
+      }
+
+
+      
+
+
+
+
+
+      // res.render('nfts/nft-details', {
+      //   foundNft,
+      //   userInSession: req.session.currentUser
+      // });
     })
     .catch((err) => {
       console.log(err);
@@ -72,5 +142,21 @@ router.get('/:id/:number/remove',isNftCreator, (req,res) => {
     console.log(err);
   })
 });
+
+
+router.get('/:id/:number/unlist', (req,res) => {
+  Nft.findByIdAndUpdate(req.params.id, {
+    $set: {forSale: false}
+  }, {new: true})
+  .then((updatedNft) => {
+    console.log(updatedNft);
+    res.redirect(`/asset/${updatedNft._id}/${updatedNft.numberId}`)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+
+})
 
 module.exports = router;

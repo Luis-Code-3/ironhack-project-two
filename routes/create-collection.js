@@ -39,7 +39,8 @@ router.post('/', (req,res) => {
         numberId: i,
         imageUrl: nftImage,
         price,
-        blockchain
+        blockchain,
+        forSale: true
       })
       .then((createdNft) => {
         Collection.findByIdAndUpdate(createdCollection._id, {

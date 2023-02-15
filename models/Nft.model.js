@@ -23,6 +23,10 @@ const nftSchema = new Schema(
         blockchain: {
             type: String,
             required: [true, "NFT Blockchain is required"]
+        },
+        forSale: {
+            type: Boolean,
+            required: [true, "For Sale is required"]
         }
     },
     {
