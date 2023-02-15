@@ -5,7 +5,7 @@ const User = require('../models/User.model');
 const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model');
 
-const {isLoggedIn, isLoggedOut, isCollectionOwner, isNftCreator} = require('../middleware/route-guard')
+const {isLoggedIn, isLoggedOut, isCollectionOwner, isNftCreator, checkBalance} = require('../middleware/route-guard')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -155,8 +155,70 @@ router.get('/:id/:number/unlist', (req,res) => {
   .catch((err) => {
     console.log(err);
   })
+})
 
+router.post('/:id/:number/sell', (req,res) => {
+  const {price} = req.body;
 
+  Nft.findByIdAndUpdate(req.params.id, {
+    price,
+    forSale: true
+  }, {new: true})
+  .then((updatedNft) => {
+    console.log("Listed and Price Adjusted", updatedNft);
+    res.redirect(`/asset/${updatedNft._id}/${updatedNft.numberId}`)
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+})
+
+router.get('/:id/:number/buy',isLoggedIn,checkBalance, (req,res) => {
+
+  Nft.findById(req.params.id)
+  .then((foundNft) => {
+    User.findByIdAndUpdate(foundNft.owner, {
+      $pull: {itemsOwned: foundNft._id},
+      $inc: {ethereumBalance: foundNft.price}
+    }, {new: true})
+    .then((updatedSeller) => {
+      console.log("Updated Seller After Item Sold:", updatedSeller);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    return foundNft;
+  })
+  .then((foundNft) => {
+    User.findByIdAndUpdate(req.session.currentUser._id, {
+      $push: {itemsOwned: foundNft._id},
+      $inc: {ethereumBalance: -(foundNft.price)}
+    }, {new: true})
+    .then((updatedBuyer) => {
+      console.log("Updated Buyer After Item Bought:", updatedBuyer);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    return foundNft;
+  })
+  .then((foundNft) => {
+    Nft.findByIdAndUpdate(req.params.id, {
+      owner: req.session.currentUser._id,
+      $set: {forSale: false}
+    }, {new: true})
+    .then((updatedNft) => {
+      console.log("Updated NFT After Sale:", updatedNft);
+      res.redirect(`/asset/${req.params.id}/${req.params.number}`)
+    })
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+  // Nft.findByIdAndUpdate(req.params.id, {
+
+  // }, {new: true})
 })
 
 module.exports = router;

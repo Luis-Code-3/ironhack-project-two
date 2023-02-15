@@ -1,5 +1,6 @@
 const Collection = require('../models/Collection.model');
 const Nft = require('../models/Nft.model')
+const User = require('../models/User.model')
 
 const isLoggedIn = (req,res,next) => {
     if(!req.session.currentUser) {
@@ -50,10 +51,37 @@ const isNftCreator = (req,res,next) => {
     })
 }
 
+const checkBalance = (req,res,next) => {
+    User.findById(req.session.currentUser._id)
+    .then((foundUser) => {
+        console.log("Found User 1:", foundUser);
+        Nft.findById(req.params.id)
+        .then((foundNft) => {
+            console.log('Found User 2:',foundUser);
+            if(foundUser.ethereumBalance >= foundNft.price){
+                next();
+            } else {
+                res.render('user/addBalance', {
+                    errorMessage:"Insufficient Funds, Add ETH to Balance",
+                    userBalance: foundUser.ethereumBalance,
+                    userInSession: req.session.currentUser
+                })
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    })
+    .catch((err) => {
+        console.log();
+    })
+}
+
 
 module.exports = {
     isLoggedIn,
     isLoggedOut,
     isCollectionOwner,
-    isNftCreator
+    isNftCreator,
+    checkBalance
 }

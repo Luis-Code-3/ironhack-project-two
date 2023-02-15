@@ -128,4 +128,8 @@ router.get('/profile',isLoggedIn, function(req, res, next) {
 
 });
 
+// router.get('/add-balance', (req,res) => {
+//   res.render
+// })
+
 module.exports = router;

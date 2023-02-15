@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   Collection.find()
   .populate('items')
   .then((allCollections) => {
-    console.log(allCollections);
+    //console.log(allCollections);
     res.render('collections/all-collections', {
       allCollections,
       userInSession: req.session.currentUser

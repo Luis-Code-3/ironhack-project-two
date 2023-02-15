@@ -5,7 +5,7 @@
 {{#if isNftOwner}}
     {{#if NotForSale}}
         <p>Item is Not Listed</p>
-        <form action="" method="post">
+        <form action="/asset/{{foundNft._id}}/{{foundNft.numberId}}/sell" method="post">
             <button type="submit">Sell</button>
             <label for=""></label>
             <input type="number" name="price" placeholder="ETH Price">
@@ -19,7 +19,7 @@
         <p>Not For Sale</p>
     {{else}}
         <p>Price: {{foundNft.price}} ETH</p>
-        <button>Buy</button>
+        <a href="/asset/{{foundNft._id}}/{{foundNft.numberId}}/buy"><button>Buy</button></a>
     {{/if}}
 {{/if}}
 <h4>Description:</h4>
