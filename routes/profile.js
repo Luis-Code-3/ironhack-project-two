@@ -47,6 +47,10 @@ router.get('/nfts', (req,res) => {
 router.get('/collections', (req,res) => {
     User.findById(req.session.currentUser._id)
     .populate('collections')
+    .populate({
+        path: "collections",
+        populate: {path: "items"}
+      })
     .then((foundUser) => {
       console.log(foundUser);
       res.render('user/profileCollections', {

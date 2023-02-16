@@ -51,7 +51,8 @@ router.get('/:id', function(req, res, next) {
       res.render('collections/collection-details', {
         foundCollection,
         userInSession: req.session.currentUser,
-        isCollectionOwner: "I am owner"
+        isCollectionOwner: "I am owner",
+        collectionOwner: "yes again"
       });
     }
   })

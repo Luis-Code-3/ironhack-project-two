@@ -28,8 +28,12 @@ router.get('/:id/:name/collections', function(req, res, next) {
 
   User.findById(req.params.id)
   .populate('collections')
+  .populate({
+    path: "collections",
+    populate: {path: "items"}
+  })
   .then((foundUser) => {
-    console.log(foundUser);
+    console.log("FOUND USER HERE:",foundUser);
     res.render('user/userCollections', {
       user: foundUser,
       userInSession: req.session.currentUser

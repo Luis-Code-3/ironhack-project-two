@@ -1,5 +1,15 @@
-<a href="/collection/{{_id}}">
-        <img src="{{items.0.imageUrl}}" alt="">
-        <img src="{{logoUrl}}" alt="Nft Logo">
-        <h3>{{collectionName}}</h3>
+<a href="/collection/{{_id}}" class="collectionCardLink">
+        <div class="collectionCard">
+                <div class="collectionImageBox">
+                        <img src="{{items.0.imageUrl}}" alt="" class="collectionImage">
+                        {{!-- <img src="https://i.seadn.io/gcs/files/e5c14b676d99bb13d9131204993e5df8.png?auto=format&w=3840" alt="" class="collectionImage"> --}}
+                </div>
+                <div class="collectionDetailsBox">
+                        <div class="nameAndSize">
+                                <h3>{{collectionName}}</h3>
+                                <h2>Size: {{size}}</h2>
+                        </div>
+                        <img src="{{logoUrl}}" alt="Nft Logo" class="collectionLogo">
+                </div>
+        </div>
 </a>
