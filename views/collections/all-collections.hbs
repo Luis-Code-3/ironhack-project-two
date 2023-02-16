@@ -1,7 +1,14 @@
-<h2>All Collections:</h2>
-<a href="/create-collection">Create Collection</a>
+{{!-- <h2>All Collections:</h2>
+<a href="/create-collection">Create Collection</a> --}}
 
-<br>
+<div class="headerBar">
+    <div class="allAndSearch">
+        <h2>All Collections:</h2>
+        <input type="text" class="searchBarCollection" placeholder="Search Collections">
+    </div>
+    <a href="/create-collection">Create Collection</a>
+</div>
+
 
 <div class="collectionSectionCard">
     {{#each allCollections}}

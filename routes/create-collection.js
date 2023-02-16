@@ -17,7 +17,10 @@ router.post('/', (req,res) => {
   const {collectionName, description, nftName, size, price, blockchain, logoUrl, backgroundHeader, nftImage} = req.body;
 
   if (!collectionName || !description || !nftName || !size || !price || !blockchain || !logoUrl || !backgroundHeader || !nftImage) {
-    res.render('collections/create-collection', {errorMessage: "All Fields are Required."})
+    res.render('collections/create-collection', {
+      errorMessage: "Must Provide Required Fields.",
+      userInSession: req.session.currentUser
+    })
     return;
   }
 

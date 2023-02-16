@@ -1,20 +1,21 @@
-<h2>Edit Collection Details:</h2>
+{{!-- <h2>Edit Collection Details:</h2> --}}
 
+<div class="createSection">
+    <form action="/collection/{{foundCollection._id}}/edit-details" method="post" class="createCards">
 
-<form action="/collection/{{foundCollection._id}}/edit-details" method="post">
+        <label for="" class="editLabel">Name:</label>
+        <input type="text" name="collectionName" value="{{foundCollection.collectionName}}" class="normal">
 
-    <label for="">Name:</label>
-    <input type="text" name="collectionName" value="{{foundCollection.collectionName}}">
+        <label for="" class="editLabel">Description:</label>
+        <input type="text" name="description" value="{{foundCollection.description}}" class="descriptionText">
 
-    <label for="">Description:</label>
-    <input type="text" name="description" value="{{foundCollection.description}}">
+        <label for="" class="editLabel">Logo:</label>
+        <input type="text" name="logoUrl" value="{{foundCollection.logoUrl}}" class="normal">
 
-    <label for="">Logo:</label>
-    <input type="text" name="logoUrl" value="{{foundCollection.logoUrl}}">
+        <label for="" class="editLabel">Background Header:</label>
+        <input type="text" name="backgroundHeader" value="{{foundCollection.backgroundHeader}}" class="normal">
 
-    <label for="">Background Header:</label>
-    <input type="text" name="backgroundHeader" value="{{foundCollection.backgroundHeader}}">
+        <button type="submit">Save</button>
 
-    <button type="submit">Save</button>
-
-</form>
+    </form>
+</div>

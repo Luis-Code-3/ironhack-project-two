@@ -1,4 +1,28 @@
-<h2>Login</h2>
+<div class= "credSection">
+    {{!-- <div class="credCard"> --}}
+        <form action="/login" method="post" class="credCard">
+
+            {{!-- <label for="">Username:</label> --}}
+            <input type="text" name="username" placeholder="Username">
+
+            {{!-- <label for="">Password:</label> --}}
+            <input type="password" name="password" placeholder="Password">
+
+            <button type="submit">Login</button>
+
+            {{#if errorMessage}}
+                <p>{{errorMessage}}</p>
+            {{/if}}
+
+        </form>
+    {{!-- </div> --}}
+</div>
+
+{{!-- {{#if errorMessage}}
+    <p>{{errorMessage}}</p>
+{{/if}} --}}
+
+{{!-- <h2>Login</h2>
 
 <form action="/login" method="post">
 
@@ -10,8 +34,4 @@
 
     <button type="submit">Login</button>
 
-</form>
-
-{{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-{{/if}}
+</form> --}}

@@ -38,7 +38,7 @@ router.post('/signup',isLoggedOut, (req,res) => {
   const { username, email, password } = req.body;
 
   if(!username || !email || !password) {
-    res.render('user/signup', {errorMessage: "All Fields are Required. Please provide your email, username, and password."});
+    res.render('user/signup', {errorMessage: "All Fields are Required."});
     return;
   }
 

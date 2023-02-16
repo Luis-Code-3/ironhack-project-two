@@ -1,4 +1,4 @@
-<h2>Sign Up</h2>
+{{!-- <h2>Sign Up</h2>
 
 <form action="/signup" method="post">
 
@@ -17,4 +17,27 @@
 
 {{#if errorMessage}}
     <p>{{errorMessage}}</p>
-{{/if}}
+{{/if}} --}}
+
+
+
+<div class="credSection">
+    <form action="/signup" method="post" class="credCard">
+
+        {{!-- <label for="">Username:</label> --}}
+        <input type="text" name="username" placeholder="Username">
+
+        {{!-- <label for="">Email:</label> --}}
+        <input type="email" name="email" placeholder="Email">
+
+        {{!-- <label for="">Password:</label> --}}
+        <input type="password" name="password" placeholder="Password">
+
+        <button type="submit">Create Account</button>
+
+        {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}}
+
+    </form>
+</div>

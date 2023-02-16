@@ -7,22 +7,26 @@
   <body>
 
     {{#if userInSession}}
-    <nav>
-      <a href="/"><h1>UniQ</h1></a>
+    <nav class="navbar">
+      <img src="https://cdn.discordapp.com/attachments/1008571164500701304/1075787094032658522/LuisCode3_2d_vector_logo_for_nft_marketplace_the_website_is_cal_b7fc4033-44ac-4f55-8348-bae2038c301b.png" alt="">
+      <a href="/" class="uniq">UniQ</a>
+      <input type="text" class="searchBar" placeholder="Search Collections, NFTs, and Users">
       <span>{{userInSession.username}}</span> <span>|</span>
       <a href="/profile">Profile</a>
       <a href="/collection">Explore</a>
-      <a href="/upcoming-releases">Drops</a>
+      <a href="/news">News</a>
       <a href="/logout">Logout</a>
     </nav>
     {{else}}
-    <nav>
-      <a href="/"><h1>UniQ</h1></a>
+    <nav class="navbar">
+      <img src="https://cdn.discordapp.com/attachments/1008571164500701304/1075787094032658522/LuisCode3_2d_vector_logo_for_nft_marketplace_the_website_is_cal_b7fc4033-44ac-4f55-8348-bae2038c301b.png" alt="">
+      <a href="/" class="uniq">UniQ</a>
+      <input type="text" class="searchBar" placeholder="Search Collections, NFTs, and Users">
       <a href="/signup">Sign Up</a>
       <a href="/login">Login</a>
       <a href="/profile">Profile</a>
       <a href="/collection">Explore</a>
-      <a href="/upcoming-releases">Drops</a>
+      <a href="/news">News</a>
     </nav>
     {{/if}}
 

@@ -1,6 +1,9 @@
-<h2>Home</h2>
+<div class="homeSectionOne">
+    <img src="https://images.squarespace-cdn.com/content/v1/50ff1acce4b047a6c7999c73/1617855289120-L4RVSG500F255FDTUE5C/Virtual_Game_IG_2.gif?format=750w" alt="">
+    <img src="https://images.squarespace-cdn.com/content/v1/50ff1acce4b047a6c7999c73/1639678287165-P6RXJKUZDY9Y6QRA5QUX/DeeKayVerse_NYC_1920x1920_v16_1.gif?format=750w" alt="">
+</div>
 
-<a href="/collection"><h3>Collections:</h3></a>
+<a href="/collection" class="collectionCreateLink"><h3>Collections:</h3></a>
 <div class="collectionSection">
     {{#each allCollections}}
         {{> collectionRow}}
@@ -8,7 +11,7 @@
 </div>
 
 
-<a href="/asset"><h3>NFTs:</h3></a>
+<a href="/asset" class="nftOwnedLink"><h3>NFTs:</h3></a>
 <div class="nftSection">
     {{#each allNfts}}
         {{> nftCard}}

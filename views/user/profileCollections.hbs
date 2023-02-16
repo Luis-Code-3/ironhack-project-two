@@ -1,9 +1,18 @@
-<img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
-<h2>{{profileUser.username}}</h2>
-<h4>Current Balance: {{profileUser.ethereumBalance}} ETH</h4>
-<a href="/add-balance"><button>Add ETH</button></a>
+<div class="profileNamePic">
+    <img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
+    <div class="profileDetails">
+        <h2>{{profileUser.username}}</h2>
+        <h4>Current Balance: <span class="ethBalanceMoney">{{profileUser.ethereumBalance}} ETH</span></h4>
+        <a href="/add-balance"><button>Add ETH</button></a>
+    </div>
+</div>
 
-<h3>All Collections Created:</h3>
+<div class="headerBarTwo">
+    <div class="allAndSearch">
+        <h2>All Collections Created:</h2>
+        <input type="text" class="searchBarCollection" placeholder="Search Collections">
+    </div>
+</div>
 
 <div class="collectionSectionCard">
     {{#each profileUser.collections}}

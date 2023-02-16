@@ -1,41 +1,59 @@
-<h2>Create Collection</h2>
+{{!-- <h2>Create Collection</h2> --}}
 
-<form action="/create-collection" method="post">
+<div class="createSection">
+    <form action="/create-collection" method="post" class="createCards">
 
-    <label for="">Collection Name:</label>
-    <input type="text" name="collectionName">
+        {{!-- <label for="">Collection Name:</label> --}}
+        <input type="text" name="collectionName" placeholder="Collection Name" class="normal">
 
-    <label for="">Description:</label>
-    <input type="text" name="description">
+        {{!-- <label for="">Description:</label> --}}
+        <input type="text" name="description" placeholder="Description" class="descriptionText">
 
-    <label for="">NFT Name:</label>
-    <input type="text" name="nftName">
+        {{!-- <label for="">NFT Name:</label> --}}
+        <input type="text" name="nftName" placeholder="NFT Name" class="normal">
 
-    <label for="">Size:</label>
-    <input type="number" name="size">
+        {{!-- <label for="">Size:</label> --}}
+        <input type="number" name="size" placeholder="Size" class="normal">
 
-    <label for="">Price:</label>
-    <input type="number" name="price">
+        {{!-- <label for="">Price:</label> --}}
+        <input type="number" name="price" placeholder="Price" class="normal">
 
-    <label for="">Blockchain:</label>
-    <select name="blockchain">
-        <option value="Ethereum">Ethereum</option>
-        <option value="Solana">Solana</option>
-    </select>
+        {{!-- <label for="">Blockchain:</label> --}}
+        <select name="blockchain" class="normal">
+            <option value="" disabled selected>Select Blockchain</option>
+            <option value="Ethereum">Ethereum</option>
+            <option value="Solana">Solana</option>
+        </select>
 
-    <label for="">Logo:</label>
-    <input type="text" name="logoUrl">
+        {{!-- <label for="">Logo:</label> --}}
+        <input type="text" name="logoUrl" placeholder="Logo" class="normal">
 
-    <label for="">Background Header:</label>
-    <input type="text" name="backgroundHeader">
+        {{!-- <label for="">Background Header:</label> --}}
+        <input type="text" name="backgroundHeader" placeholder="Background Header" class="normal">
 
-    <label for="">NFT Image</label>
-    <input type="text" name="nftImage">
+        {{!-- <label for="">NFT Image</label> --}}
+        <input type="text" name="nftImage" placeholder="NFT Image: 1" class="normal">
 
-    <button type="submit">Create Collection</button>
+        
+        {{!-- <input type="text" name="nftImage" placeholder="NFT Image: 2 (Optional)" class="normal">
 
-</form>
+        
+        <input type="text" name="nftImage" placeholder="NFT Image: 3 (Optional)" class="normal">
 
-{{#if errorMessage}}
+        
+        <input type="text" name="nftImage" placeholder="NFT Image: 4 (Optional)" class="normal">
+
+        
+        <input type="text" name="nftImage" placeholder="NFT Image: 5 (Optional)" class="normal"> --}}
+
+        <button type="submit">Create Collection</button>
+
+        {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>
+
+{{!-- {{#if errorMessage}}
     <p>{{errorMessage}}</p>
-{{/if}}
+{{/if}} --}}

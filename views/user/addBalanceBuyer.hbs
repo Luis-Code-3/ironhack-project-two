@@ -1,4 +1,4 @@
-{{#if errorMessage}}
+{{!-- {{#if errorMessage}}
     <p>{{errorMessage}}</p>
 {{/if}}
 <h3>Current Balance: {{userBalance}} ETH</h3>
@@ -6,5 +6,16 @@
     <label for=""></label>
     <input type="text" name="balanceAdd" placeholder="1234">
     <button type="submit">Add ETH</button>
-</form>
+</form> --}}
 
+<div class="credSection">
+    <form action="/asset/{{NftToBuy._id}}/{{NftToBuy.numberId}}/add-balance" method="post" class="credCard">
+        <h3 class="currentBalance">Balance: <span>{{userBalance}} ETH</span></h3>
+        {{!-- <label for=""></label> --}}
+        <input type="text" name="balanceAdd" placeholder="1234">
+        <button type="submit">Add ETH</button>
+        {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+        {{/if}}
+    </form>
+</div>

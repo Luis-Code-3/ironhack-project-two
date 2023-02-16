@@ -1,7 +1,9 @@
-<img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
-<h2>{{user.username}}</h2>
+<div class="nameAndPic">
+    <img src="https://storage.googleapis.com/opensea-static/opensea-profile/27.png" alt="Profile Picture">
+    <h2>User: {{user.username}}</h2>
+</div>
 
-<a href="/users/{{user._id}}/{{user.username}}/collections"><h3>Collections Created:</h3></a>
+<a href="/users/{{user._id}}/{{user.username}}/collections" class="collectionCreateLink"><h3>Collections Created:</h3></a>
 
 <div class="collectionSection">
     {{#each user.collections}}
@@ -9,7 +11,7 @@
     {{/each}}
 </div>
 
-<a href="/users/{{user._id}}/{{user.username}}/nfts"><h3>NFTs Owned:</h3></a>
+<a href="/users/{{user._id}}/{{user.username}}/nfts" class="nftOwnedLink"><h3>NFTs Owned:</h3></a>
 <div class="nftSection">
     {{#each user.itemsOwned}}
         {{> nftCard}}
