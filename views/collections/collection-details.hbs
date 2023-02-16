@@ -5,6 +5,7 @@
 <h4>Size: {{foundCollection.size}}</h4>
 <h4>Blockchain: {{foundCollection.blockchain}}</h4>
 <p>{{foundCollection.description}}</p>
+<br>
 
 
 
@@ -14,19 +15,20 @@
     <a href="/collection/{{foundCollection._id}}/delete-collection"><button>Delete Collection</button></a>
 
     <br>
-
-    {{#each foundCollection.items}}
-        <br>
-        {{> nftCard}}
-        <a href="/asset/{{_id}}/{{numberId}}/remove"><button>Remove</button></a>
-    {{/each}}
+    <div class="nftSection">
+        {{#each foundCollection.items}}
+            {{> nftCard}}
+            <a href="/asset/{{_id}}/{{numberId}}/remove"><button>Remove</button></a>
+        {{/each}}
+    </div>
 
 {{else}}
 
-    {{#each foundCollection.items}}
-        <br>
-        {{> nftCard}}
-    {{/each}}
+    <div class="nftSection">
+        {{#each foundCollection.items}}
+            {{> nftCard}}
+        {{/each}}
+    </div>
 
 
 {{/if}}

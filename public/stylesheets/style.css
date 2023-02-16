@@ -1,8 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #0e1012;
+  color: white;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
+
+.nftCard {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 290px;
+  height: 45vh;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px 2px #070708;
+  background-color: #272e37;
+}
+
+.nftCardLink {
+  margin-bottom: 3%;
+  color: white;
+}
+
+.nftCard:hover {
+  box-shadow: 0px 0px 15px 6px #070708;
+}
+
+.nftCard:hover .nftImage {
+  width: 103%;
+  height: 103%;
+}
+
+
+.nftImageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  flex-grow: 1;
+}
+
+.nftImage {
+  width: 100%;
+  height: 100%;
+}
+
+.nftDetailsBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 20%;
+  flex-grow: 1;
+}
+
+.nftDetailsBox > h2 {
+  margin-left: 7%;
+}
+
+.nftDetailsBox > h3 {
+  margin-bottom: 3%;
+  margin-left: 7%;
+  margin-top: 5%;
+  color: #5599ff;
+}
+
+
+/*  */
+
+.nftSection {
+
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.collectionSection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+/*  */
+
+.collectionRowLink {
+  display: flex;
+  color: white;
+  width: 40%;
+  flex-grow: 1;
+}
+
+.collectionRow {
+  border: 1px solid #14171a;;
+  background-color: #272e37;
+  border-radius: 5px;
+  padding: 15px 60px;
+  overflow: hidden;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  height: 5vh;
+  flex-grow: 1;
+}
+
+.collectionRow img {
+  width: auto;
+  height: 130%;
+  border-radius: 10px;
+}
+
+.collectionRow .collectionName {
+  color: #973dec;
+}
+

@@ -1,9 +1,17 @@
-<a href="/asset/{{_id}}/{{numberId}}">
-        <img src="{{imageUrl}}" alt="Nft Image">
-        <h3>{{nftName}} #{{numberId}}</h3>
-        {{#if forSale}}
-        <h4>{{price}} ETH</h4>
-        {{else}}
+<a href="/asset/{{_id}}/{{numberId}}" class="nftCardLink">
+        <div class="nftCard">
+                {{!-- <a href="/asset/{{_id}}/{{numberId}}"> --}}
+                        <div class="nftImageBox">
+                                <img src="{{imageUrl}}" alt="Nft Image" class="nftImage">
+                        </div>
+                        <div class="nftDetailsBox">
+                                <h3>{{nftName}} #{{numberId}}</h3>
+                                {{#if forSale}}
+                                <h2>{{price}} ETH</h2>
+                                {{else}}
 
-        {{/if}}
+                                {{/if}}
+                        </div>
+                {{!-- </a> --}}
+        </div>
 </a>

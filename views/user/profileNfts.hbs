@@ -4,6 +4,8 @@
 <a href="/add-balance"><button>Add ETH</button></a>
 
 <h3>All NFTs Owned:</h3>
-{{#each profileUser.itemsOwned}}
-    {{> nftCard}}
-{{/each}}
+<div class="nftSection">
+    {{#each profileUser.itemsOwned}}
+        {{> nftCard}}
+    {{/each}}
+</div>

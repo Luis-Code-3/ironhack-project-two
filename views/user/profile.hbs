@@ -5,11 +5,15 @@
 
 <a href="/profile/collections"><h3>Collections Created:</h3></a>
 
-{{#each profileUser.collections}}
-    {{> collectionCard}}
-{{/each}}
+<div class="collectionSection">
+    {{#each profileUser.collections}}
+        {{> collectionRow}}
+    {{/each}}
+</div>
 
 <a href="/profile/nfts"><h3>NFTs Owned:</h3></a>
-{{#each profileUser.itemsOwned}}
-    {{> nftCard}}
-{{/each}}
+<div class="nftSection">
+    {{#each profileUser.itemsOwned}}
+        {{> nftCard}}
+    {{/each}}
+</div>
