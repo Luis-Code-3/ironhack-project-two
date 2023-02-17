@@ -15,8 +15,8 @@ const Nft = require('../models/Nft.model');
 router.get('/', async function(req, res, next) {
 
   try {
-    const allCollectionsArray = await Collection.find()
-    const allNftsArray = await Nft.find()
+    const allCollectionsArray = await Collection.find().limit(8)
+    const allNftsArray = await Nft.find().limit(12)
     res.render('index', {
       userInSession: req.session.currentUser,
       allNfts: allNftsArray,

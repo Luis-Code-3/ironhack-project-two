@@ -14,7 +14,7 @@ router.get('/',isLoggedIn, function(req, res, next) {
 
 router.post('/', (req,res) => {
 
-  const {collectionName, description, nftName, size, price, blockchain, logoUrl, backgroundHeader, nftImage} = req.body;
+  const {collectionName, description, nftName, size, price, blockchain, logoUrl, backgroundHeader, nftImage, nftImageTwo, nftImageThree, nftImageFour, nftImageFive} = req.body;
 
   if (!collectionName || !description || !nftName || !size || !price || !blockchain || !logoUrl || !backgroundHeader || !nftImage) {
     res.render('collections/create-collection', {
@@ -23,6 +23,14 @@ router.post('/', (req,res) => {
     })
     return;
   }
+
+  let imageArray = [nftImage,nftImageTwo,nftImageThree,nftImageFour,nftImageFive];
+  const sortArray = imageArray.filter((el) => {
+    return Boolean(el);
+  })
+
+  console.log(sortArray);
+  console.log('RANDOM IMAGE:',sortArray[Math.floor(Math.random() * sortArray.length)])
 
   Collection.create({
     collectionName,
@@ -40,7 +48,7 @@ router.post('/', (req,res) => {
         fromCollection: createdCollection._id,
         nftName,
         numberId: i,
-        imageUrl: nftImage,
+        imageUrl: sortArray[Math.floor(Math.random() * sortArray.length)],
         price,
         blockchain,
         forSale: true

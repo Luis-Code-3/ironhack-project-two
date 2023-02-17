@@ -18,9 +18,13 @@ router.get('/',isLoggedIn, function(req, res, next) {
     .populate('itemsOwned')
     .then((foundUser) => {
       console.log(foundUser);
+      const limitedNfts = foundUser.itemsOwned.slice(0, 8);
+      const limitedCollections = foundUser.collections.slice(0, 4);
       res.render('user/profile', {
         profileUser: foundUser,
-        userInSession: req.session.currentUser
+        userInSession: req.session.currentUser,
+        limitedNfts,
+        limitedCollections
       });
     })
     .catch((err) => {
