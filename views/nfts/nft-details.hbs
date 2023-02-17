@@ -1,27 +1,31 @@
-<img src="{{foundNft.imageUrl}}" alt="Nft Image">
-<a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a>
-<h2>{{foundNft.nftName}} #{{foundNft.numberId}}</h2>
-<p>Owned by: <a href="/users/{{foundNft.owner._id}}/{{foundNft.owner.username}}">{{foundNft.owner.username}}</a></p>
-{{#if isNftOwner}}
-    {{#if NotForSale}}
-        <p>Item is Not Listed</p>
-        <form action="/asset/{{foundNft._id}}/{{foundNft.numberId}}/sell" method="post">
-            <button type="submit">Sell</button>
-            <label for=""></label>
-            <input type="number" name="price" placeholder="ETH Price">
-        </form>
-    {{else}}
-        <p>Price: {{foundNft.price}} ETH</p>
-        <a href="/asset/{{foundNft._id}}/{{foundNft.numberId}}/unlist"><button>Remove Listing</button></a>
-    {{/if}}
-{{else}}
-    {{#if NotForSale}}
-        <p>Not For Sale</p>
-    {{else}}
-        <p>Price: {{foundNft.price}} ETH</p>
-        <a href="/asset/{{foundNft._id}}/{{foundNft.numberId}}/buy"><button>Buy</button></a>
-    {{/if}}
-{{/if}}
-<h4>Description:</h4>
-<p>By <a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a></p>
-<p>{{foundNft.fromCollection.description}}</p>
+<div class="nftDetailsSection">
+    <img src="{{foundNft.imageUrl}}" alt="Nft Image">
+    <div class="nftParams">
+        <a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a>
+        <h2>{{foundNft.nftName}} #{{foundNft.numberId}}</h2>
+        <p>Owned by: <a href="/users/{{foundNft.owner._id}}/{{foundNft.owner.username}}">{{foundNft.owner.username}}</a></p>
+        {{#if isNftOwner}}
+            {{#if NotForSale}}
+                <p>Item is Not Listed</p>
+                <form action="/asset/{{foundNft._id}}/{{foundNft.numberId}}/sell" method="post" class="sellItem">
+                    <button type="submit">Sell</button>
+                    <label for=""></label>
+                    <input type="number" name="price" placeholder="ETH Price">
+                </form>
+            {{else}}
+                <p>Price: {{foundNft.price}} ETH</p>
+                <a href="/asset/{{foundNft._id}}/{{foundNft.numberId}}/unlist" class="removeListingButton"><h3>Remove Listing</h3></a>
+            {{/if}}
+        {{else}}
+            {{#if NotForSale}}
+                <p>Not For Sale</p>
+            {{else}}
+                <p>Price: {{foundNft.price}} ETH</p>
+                <a href="/asset/{{foundNft._id}}/{{foundNft.numberId}}/buy" class="buyButton"><h3>Buy</h3></a>
+            {{/if}}
+        {{/if}}
+        <h4>Description:</h4>
+        <p>By <a href="/collection/{{foundNft.fromCollection._id}}">{{foundNft.fromCollection.collectionName}}</a>: {{foundNft.fromCollection.description}}</p>
+        {{!-- <p>{{foundNft.fromCollection.description}}</p> --}}
+    </div>
+</div>

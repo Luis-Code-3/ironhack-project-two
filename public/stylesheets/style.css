@@ -39,15 +39,15 @@ a {
   border-radius: 30px;
 }
 
-.uniq {
-  margin-left: -1.5%;
+.navbar span {
+  color: #ac53ff;
 }
 
 .nftCard {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  width: 290px;
+  width: 100%;
   height: 45vh;
   overflow: hidden;
   box-shadow: 0px 0px 10px 2px #070708;
@@ -65,7 +65,7 @@ a {
 
 .nftCard:hover .nftImage {
   width: 103%;
-  height: 103%;
+  /* height: 103%; */
 }
 
 
@@ -170,7 +170,7 @@ a {
   border-radius: 15px;
   display: flex;
   flex-direction: column;
-  width: 290px;
+  width: 100%;
   height: 45vh;
   overflow: hidden;
   box-shadow: 0px 0px 10px 2px #070708;
@@ -232,7 +232,7 @@ a {
 
 .collectionCard:hover .collectionImage {
   width: 103%;
-  height: 103%;
+  /* height: 103%; */
 }
 
 
@@ -258,6 +258,10 @@ a {
   font-weight: 700;
   height: 10%;
   align-self: center;
+}
+
+.removeBtn:hover {
+  background-color: rgb(200, 71, 71);
 }
 
 
@@ -409,6 +413,10 @@ a {
   margin-bottom: 1.5%;
 }
 
+.collectionCreateLink:hover {
+  background-color: #1989b6;
+}
+
 .collectionCreateLink h3 {
   color: white;
 }
@@ -422,6 +430,10 @@ a {
   background-color: #0fa3dd;
   margin-bottom: 1.5%;
   margin-top: 1.5%;
+}
+
+.nftOwnedLink:hover {
+  background-color: #1989b6;
 }
 
 .nftOwnedLink h3 {
@@ -577,3 +589,166 @@ a {
   font-weight: 700;
   margin-bottom: -5%;
 }
+
+/*  */
+
+
+.nftDetailsSection {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  margin-top: 2%;
+}
+
+
+.nftDetailsSection img {
+  width: auto;
+  height: 80%;
+  box-shadow: 0px 0px 10px 2px #070708;
+  border-radius: 20px;
+}
+
+.nftParams {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 79%;
+  font-size: 140%;
+}
+
+
+.buyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 5vh;
+  background-color: #45caa9;
+}
+
+.buyButton:hover {
+  background-color: #41a88e;
+}
+
+.buyButton h3 {
+  color: white;
+}
+
+.removeListingButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 5vh;
+  background-color: rgb(247, 80, 80);
+}
+
+.removeListingButton:hover {
+  background-color: rgb(210, 75, 75);
+}
+
+.removeListingButton h3 {
+  color: white;
+}
+
+.sellItem {
+  width: 100%;
+}
+
+.sellItem button {
+  width: 20%;
+  height: 140%;
+  border: none;
+  background-color: #45caa9;
+  color: white;
+  font-weight: 700;
+  font-size: 80%;
+}
+
+.sellItem button:hover {
+  background-color: #41a88e;
+}
+
+.sellItem input {
+  width: 50%;
+  height: 140%;
+  border: none;
+}
+
+/*  */
+
+.collectionDetailsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8%;
+  width: 100%;
+  height: 70vh;
+}
+
+.collectionBackground {
+  width: 100%;
+  overflow: hidden;
+  height: 60%;
+  border-radius: 20px;
+}
+
+.collectionBackground img {
+  width: 100%;
+  height: 150%;
+}
+
+.logoAndCollectionDetails {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 3%;
+}
+
+.collectionParams {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.logoAndCollectionDetails img {
+  width: 10%;
+  border-radius: 20px;
+}
+
+
+.makePurp {
+  color: #ac53ff;
+}
+
+.ownerButtons {
+  display: flex;
+  width: 100%;
+  gap: 2%;
+  margin-bottom: 3%;
+}
+
+.ownerButtons a {
+  color: white;
+  background-color: #f9dc7d;
+  width: 10%;
+  text-align: center;
+  padding: 10px;
+  font-weight: 700;
+}
+
+.ownerButtons a:hover {
+  background-color: #cdb464;
+}
+
+
+
+
+
+/* <div class="collectionDetailsHeader">
+    <img src="{{foundCollection.backgroundHeader}}" alt="Header" class="collectionBackground">
+    <div class="logoAndCollectionDetails">
+        <img src="{{foundCollection.logoUrl}}" alt="Nft Logo">
+        <div class="collectionParams"> */

@@ -169,6 +169,11 @@ router.get('/:id/:number/unlist', (req,res) => {
 router.post('/:id/:number/sell', (req,res) => {
   const {price} = req.body;
 
+  if(!price) {
+    res.redirect(`/asset/${req.params.id}/${req.params.number}`);
+    return;
+  }
+
   Nft.findByIdAndUpdate(req.params.id, {
     price,
     forSale: true
